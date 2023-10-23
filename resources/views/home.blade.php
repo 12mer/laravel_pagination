@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laravel Pagination Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
+    crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" 
+    crossorigin="anonymous"></script>
+    <style>
+        body{background-color:black;color:yellow;}
+        h1{text-align:center;}
+        .navbar{float: right;}
+        a{color:red;}
+        a:hover{color:green;text-decoration:none;}
+    </style>
+</head>
+<body>
+    <h1>Laravel Pagination Demo</h1>
+    <div class="navbar">
+        <a href="{{URL('/payrolls')}}">Payrolls</a>
+    </div>
+    <div class="container mt-5">
+        <table class="table table-bordered mb-5">
+            <thead>
+                <tr class="table-success">
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Date Of Birth</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($employees as $data)
+                <tr>
+                    <th scope="row">{{$data->id}}</th>
+                    <th scope="row">{{$data->firstname}}</th>
+                    <th scope="row">{{$data->lastname}}</th>
+                    <th scope="row">{{$data->email}}</th>
+                    <th scope="row">{{$data->dob}}</th>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-center">
+            {!! $employees->links() !!}
+        </div>
+    </div>
+</body>
+</html>
